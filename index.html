@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Using Javascript Session Storage</h1>
+    <form action="" id="userForm">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname">
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        
+        <label for="Address">Street Address:</label>
+        <input type="text" id="addr" name="addr">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state">
+
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="zip">
+        
+
+        <button type="button" onclick="saveData()">Save</button>
+        <button type="button" onclick="loadData()">Load</button>
+        <button type="button" onclick="clearData()">Clear</button>
+    </form>
+
+    <script>
+        function saveData() {
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const email = document.getElementById('email').value;
+            const addr = document.getElementById('addr').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+
+            sessionStorage.setItem('fname', fname);
+            sessionStorage.setItem('lname', lname);
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('Address',addr);
+            sessionStorage.setItem('city',city);
+            sessionStorage.setItem('state',state);
+            sessionStorage.setItem('zip',zip);
+            alert('Data saved to session storage.')
+        }
+
+    function loadData() {
+    const firstName = sessionStorage.getItem('fname');
+    const lastName = sessionStorage.getItem('lname');
+    const email = sessionStorage.getItem('email');
+    const addr = sessionStorage.getItem('Address');
+    const city = sessionStorage.getItem('city');
+    const state = sessionStorage.getItem('state');
+    const zip = sessionStorage.getItem('zip');
+
+    if (firstName && lastName && email && addr && city && state && zip) {
+        document.getElementById('fname').value = firstName;
+        document.getElementById('lname').value = lastName;
+        document.getElementById('email').value = email;
+        document.getElementById('addr').value = addr;
+        document.getElementById('city').value = city;
+        document.getElementById('state').value = state;
+        document.getElementById('zip').value = zip;
+        alert('Stored data for First Name, Last Name, Email, Address, City, State, and Zip has been loaded');
+    } else {
+        alert('There was a problem retrieving your form data. Please fill out the form again, and we apologize for the inconvenience');
+    }
+}
+
+
+        function clearData() {
+            sessionStorage.removeItem('fname');
+            sessionStorage.removeItem('lname');
+            sessionStorage.removeItem('email');
+            sessionStorage.removeItem('address');
+            sessionStorage.removeItem('city');
+            sessionStorage.removeItem('state');
+            sessionStorage.removeItem('zip');
+            alert('All session storage cleard.')
+        }
+    </script>
+</body>
+</html>
